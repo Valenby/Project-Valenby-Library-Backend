@@ -1,0 +1,19 @@
+{
+  "name": "valenbylibrery",
+  "version": "1.0.0",
+  "description": "Books store",
+  "main": "app.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Valenby/Project-Valenby-Library-Backend.git"
+  },
+  "author": "valen",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Valenby/Project-Valenby-Library-Backend/issues"
+  },
+  "homepage": "https://github.com/Valenby/Project-Valenby-Library-Backend#readme"
+}
