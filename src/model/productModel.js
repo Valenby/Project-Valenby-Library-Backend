@@ -10,7 +10,6 @@ const CategoryEnum = Object.freeze({
 });
 
 const bookProductSchema = mongoose.Schema({
-
     category:{
         type: String,
         Enum: Object.values(CategoryEnum),
@@ -34,12 +33,11 @@ const bookProductSchema = mongoose.Schema({
     },
    pages: {
     type: Number,
-    required: false
+    required: true
    },
    stock: {
     type: Number,
-    required: false,
-    default: 100
+    required: true,
    },
    price: {
     type: Number,

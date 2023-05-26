@@ -1,21 +1,28 @@
 require('dotenv').config();
 
 const express = require('express');
-//! llamada a moongose....
-const { default: moongose } = require('mongoose');
+const moongose = require('mongoose');
+const {appRoute, productRoute} = require('./Routes');
 
 const app = express();
-const PORT = 300;
+const PORT = 3000;
 
 app.use(express.json());
 
 //!RUTAS:
-// (app.use('/), Route) 
+app.use('/', appRoute)
+app.use('/books', productRoute)
 
 const start = async () => {
     try {
         await moongose.connect(process.env.CONNECTION_DB);
+        console.log('connection successful');
+
+        app.listen(PORT, () => {
+            console.log('port listening')
+        });
     } catch (error) {
-        
+        console.log('error in server', error);
     }
 }
+start();
