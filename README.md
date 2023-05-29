@@ -41,6 +41,9 @@ La Tienda de Libros es una aplicación web que permite a los usuarios explorar y
 - **MongoDB Compass**: Una interfaz gráfica para administrar y visualizar datos en MongoDB.
 
 - **Postman**: Una herramienta para probar y documentar APIs.
+
+## Instalación: 
+
 1. Clona el repositorio de GitHub:
 ```
 git clone <URL del repositorio>
