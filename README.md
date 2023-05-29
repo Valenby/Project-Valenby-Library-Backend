@@ -29,34 +29,52 @@ La Tienda de Libros es una aplicación web que permite a los usuarios explorar y
 ## Dependencias
 
 - dotenv: Para la carga de variables de entorno.
-```javascript
-npm install dotenv
-```
 - express: Para crear la aplicación web y gestionar las rutas.
-```javascript
-npm install express
-```
 - jsonwebtoken: Para la autenticación basada en tokens.
-```javascript
-npm install jsonwebtoken
-```
 - mongoose: Para interactuar con la base de datos MongoDB.
-```javascript
-npm install mongoose
-```
 - nodemon: Para reiniciar automáticamente el servidor durante el desarrollo.
-```javascript
-npm install nodemon 
-```
 - bcrypt: Para el cifrado de contraseñas.
-```javascript
-npm install bcrypt
-```
+
 
 ## Herramientas adicionales
 
 - **MongoDB Compass**: Una interfaz gráfica para administrar y visualizar datos en MongoDB.
 
 - **Postman**: Una herramienta para probar y documentar APIs.
+1. Clona el repositorio de GitHub:
+```
+git clone <URL del repositorio>
+```
+2. Instala las dependencias:
+```javascript
+- npm install dotenv
+- npm install express
+- npm install jsonwebtoken
+- npm install mongoose
+- npm install nodemon 
+- npm install bcrypt
+```
+3. Configuración de la base de datos:
+- Asegúrate de tener MongoDB en funcionamiento en tu sistema.
+- Crea una base de datos llamada "tienda_libros" en MongoDB.
 
+4. Configuración del entorno:
+- Crea un archivo `.env` en la raíz del proyecto.
+- Agrega las siguientes variables de entorno en el archivo `.env`:
 
+  ```
+  CONNECTION_DB = mongodb://localhost:27017/tienda_libros
+  SECRETSTRING= para hacer el hasheo
+  SECRET_KEY=your_secret_key
+  ```
+
+5. Inicia la aplicación:
+```
+npm start 
+```
+
+6. Accede a la aplicación en tu navegador web:
+
+```
+http://localhost:3000
+```
