@@ -1,19 +1,32 @@
 //crud products books
 const {bookProductModel} = require('../model');
 
-// lista book product.
-exports.getBookProduct = async (_,res) => {
+// list book.
+exports.getBook = async (_,res) => {
     console.log(' -> method viewAll');
     const result = await bookProductModel.find();
     res.json(result);
 
 };
 
+// list book id
+exports.getBookId = async (req, res) => {
+    console.log('-> method viewId');
+    const book = await bookProductModel.findById({'_id': req.params.id})
+    console.log(book);
 
-exports.createBookProduct = async (req, res) => {
-    console.log('-> method createProduct');
+    if (!book){
+        res.status(404).send('book list not found ')
+        return
+    }
+    res.json(book);
+} 
 
-    const newBookProduct = {
+// create book
+exports.createBook = async (req, res) => {
+    console.log('-> method createBook');
+
+    const newBook = {
         category: req.body.category,
         title: req.body.title,
         author: req.body.author,
@@ -24,10 +37,41 @@ exports.createBookProduct = async (req, res) => {
     }
 
     if (req.body.tags){
-        newBookProduct.tags = req.body.tags
+        newBook.tags = req.body.tags
     }
 
-    const result = await bookProductModel.create(newBookProduct);
+    const result = await bookProductModel.create(newBook);
 
     res.json(result)
-}
+};
+
+//update book
+exports.updateBook = async (req, res) => {
+    console.log('-> method updateBook');
+
+    const {id} = req.params;
+    const updateData = req.body;
+
+    const result = await bookProductModel.findByIdAndUpdate({'_id':id}, updateData, {new: true}).exec()
+    if (!result){
+        res.status(404).send(`book whit id ${id} no fue encontrado.`)
+        return
+    }
+    res.json(result)
+};
+
+// delete book 
+exports.deleteBook = async (req, res) => {
+    console.log('-> method delete');
+
+    const {id} = req.params;
+
+    const result = await bookProductModel.findByIdAndDelete({'_id': id});
+    if(!result){
+        res.status(404).send('could not delete')
+        return
+    }
+    res.json(result)
+};
+
+
