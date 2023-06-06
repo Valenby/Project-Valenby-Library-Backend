@@ -6,7 +6,6 @@ exports.getBook = async (_,res) => {
     console.log(' -> method viewAll');
     const result = await bookProductModel.find();
     res.json(result);
-
 };
 
 // list book id

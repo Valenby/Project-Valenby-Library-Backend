@@ -26,7 +26,7 @@ userSchema.pre('save', async function(next) {
         }
 
         const salt = await bcrypt.genSalt(10);
-        const hash = await bcrypt.hash(this.password,  `${salt}${process.env.SECRETSTRING}`);
+        const hash = await bcrypt.hash(this.password, `${salt}${process.env.SECRETSTRING}`);
         this.password = hash;
         next();
     } catch (error) {
@@ -49,6 +49,6 @@ userSchema.statics.login = async function(email,password){
     }
 }
 
-const userModel = mongoose.model('User', userSchema);
+const userModel = mongoose.model('user', userSchema);
 
 module.exports = userModel;

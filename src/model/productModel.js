@@ -9,10 +9,10 @@ const CategoryEnum = Object.freeze({
     LITERATURE:"literatura"
 });
 
-const bookProductSchema = mongoose.Schema({
+const bookSchema = mongoose.Schema({
     category:{
         type: String,
-        Enum: Object.values(CategoryEnum),
+        enum: Object.values(CategoryEnum),
         required: true
     },
     tags: {
@@ -45,10 +45,10 @@ const bookProductSchema = mongoose.Schema({
    }
 });
 
-const bookProductModel = mongoose.model("books products", bookProductSchema);
+const bookProductModel = mongoose.model("book", bookSchema);
 
 module.exports = {
     bookProductModel,
-    bookProductSchema
+    bookSchema
     };
 

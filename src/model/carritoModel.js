@@ -1,11 +1,12 @@
 const mongoose = require('mongoose');
 
-const bookProductSchema = require('./productModel')
+// const { bookSchema } = require('./productModel')
 
 const carritoSchema = mongoose.Schema({
     items: [{
-        book: {
-            type: bookProductSchema,
+        bookId: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'book',
             required: true
         },
         quantity: {
