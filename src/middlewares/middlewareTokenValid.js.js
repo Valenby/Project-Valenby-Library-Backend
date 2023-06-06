@@ -1,1 +1,1 @@
-//validar si token, y debo descargar joi
+//validar si token es valido o invalido

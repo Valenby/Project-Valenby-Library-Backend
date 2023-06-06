@@ -49,6 +49,7 @@ const bookProductModel = mongoose.model("book", bookSchema);
 
 module.exports = {
     bookProductModel,
-    bookSchema
+    bookSchema,
+    CategoryEnum
     };
 

@@ -25,6 +25,7 @@ La Tienda de Libros es una aplicación web que permite a los usuarios explorar y
 ```javascript
 - JavaScript
 - Node.js
+- Mongodb
 ```
 ## Dependencias
 
@@ -34,6 +35,7 @@ La Tienda de Libros es una aplicación web que permite a los usuarios explorar y
 - mongoose: Para interactuar con la base de datos MongoDB.
 - nodemon: Para reiniciar automáticamente el servidor durante el desarrollo.
 - bcrypt: Para el cifrado de contraseñas.
+- joi: Para hacer validaciones.
 
 
 ## Herramientas adicionales
