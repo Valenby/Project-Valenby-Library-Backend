@@ -14,11 +14,11 @@ exports.login = async (req, res) => {
       return
     }
     
-    //llave del token
+    //llave del token_ creamos token
     const token = JWT.sign(
-      { email: user.email, role: user.role },
+      { email: user.email, role: user.role, userId: user._id },
       process.env.JWT_SECRET_KEY,
-      { expiresIn: "30s" }
+      { expiresIn: "10m" }
     )
     
     res.json({token, email: user.email});

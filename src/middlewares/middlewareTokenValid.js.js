@@ -1,1 +1,0 @@
-//validar si token es valido o invalido

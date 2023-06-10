@@ -3,8 +3,8 @@ const Joi = require('joi');
 //schema validate user
 const createUserSchema = Joi.object({
     email: Joi.string().email().required(),
-    password: Joi.string().required(),
-    role: Joi.string().valid('admin', 'user').required()
+    password: Joi.string().min(6).required(),
+    role: Joi.string().valid('admin', 'user').optional()
 });
 
 const validateMiddlewareUser = (req, res, next) => {

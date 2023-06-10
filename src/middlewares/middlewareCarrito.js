@@ -2,14 +2,10 @@ const Joi = require('joi');
 
 // schema validate carrito
 const carritoSchema = Joi.object({
-    items: Joi.array().items(
-      Joi.object({
-        bookId: Joi.string().required(),
-        quantity: Joi.number().integer().min(1).required()
-      })
-    ).required()
-  });
-  
+    bookId: Joi.string().required(),
+    quantity: Joi.number().integer().min(1).required()
+});
+
   
   const validateMiddlewareCarrito = (req, res, next) => {
     const { error } = carritoSchema.validate(req.body);

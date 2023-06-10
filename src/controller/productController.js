@@ -1,4 +1,6 @@
 //crud products books
+
+const { ObjectId } = require('mongodb');
 const {bookProductModel} = require('../model');
 
 // list book.
@@ -11,11 +13,17 @@ exports.getBook = async (_,res) => {
 // list book id
 exports.getBookId = async (req, res) => {
     console.log('-> method viewId');
+    
+    if (!ObjectId.isValid(req.params.id)){
+        res.status(401).send('invalid id')
+        return
+    } 
+
     const book = await bookProductModel.findById({'_id': req.params.id})
     console.log(book);
 
     if (!book){
-        res.status(404).send('book list not found ')
+        res.status(404).send('book not found ')
         return
     }
     res.json(book);
@@ -51,6 +59,10 @@ exports.updateBook = async (req, res) => {
     const {id} = req.params;
     const updateData = req.body;
 
+    if (!ObjectId.isValid(req.params.id)){
+        res.status(401).send('invalid id')
+        return
+    } 
     const result = await bookProductModel.findByIdAndUpdate({'_id':id}, updateData, {new: true}).exec()
     if (!result){
         res.status(404).send(`book whit id ${id} no fue encontrado.`)
@@ -64,13 +76,18 @@ exports.deleteBook = async (req, res) => {
     console.log('-> method delete');
 
     const {id} = req.params;
+    
+    if (!ObjectId.isValid(req.params.id)){
+        res.status(401).send('invalid id')
+        return
+    } 
 
     const result = await bookProductModel.findByIdAndDelete({'_id': id});
     if(!result){
         res.status(404).send('could not delete')
         return
     }
-    res.json(result)
+    res.json({message:`Libro '${id}' fue eliminado correctamente`})
 };
 
 
