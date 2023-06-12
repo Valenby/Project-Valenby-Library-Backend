@@ -1,6 +1,6 @@
 const jwt = require('jsonwebtoken');
 
-const validateToken = (req, res, next) => {
+const validateAdminToken = (req, res, next) => {
   // Obtén el token de la cabecera de autorización
   const token = req.headers.authorization;
 
@@ -16,6 +16,10 @@ const validateToken = (req, res, next) => {
     if (decodedToken.exp <= Date.now() / 1000) {
       return res.status(403).json({ message: 'El token ha expirado' });
     }
+
+    if(decodedToken.role != "admin") {
+      return res.status(403).json({ message: 'Solo administradores pueden ejecutar esta accion' });
+    }
     // Verifica el token
     jwt.verify(token, process.env.JWT_SECRET_KEY);
 
@@ -29,4 +33,4 @@ const validateToken = (req, res, next) => {
   }
 };
 
-module.exports = { validateToken };
+module.exports = { validateAdminToken };
