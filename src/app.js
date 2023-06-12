@@ -5,8 +5,7 @@ const moongose = require('mongoose');
 const {appRoute,authRoute, userRoute, productRoute, carritoRoute } = require('./Routes');
 
 const app = express();
-const PORT = 3000;
-
+const PORT = process.env.PUERTO;
 app.use(express.json());
 
 //!RUTAS:
