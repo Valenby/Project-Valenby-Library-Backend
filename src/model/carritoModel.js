@@ -1,6 +1,5 @@
 const mongoose = require('mongoose');
 
-// const { bookSchema } = require('./productModel')
 
 const carritoSchema = mongoose.Schema({
     items: [{

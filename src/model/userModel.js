@@ -2,6 +2,11 @@ const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
 
 const userSchema = mongoose.Schema({
+    carrito: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'carrito',
+        required: false
+    },
     email: {
         type: String,
         required: true,
