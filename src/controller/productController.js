@@ -71,6 +71,8 @@ exports.updateBook = async (req, res) => {
     res.json(result)
 };
 
+//delete book for id
+
 // delete book 
 exports.deleteBook = async (req, res) => {
     console.log('-> method delete');

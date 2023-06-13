@@ -3,4 +3,5 @@ exports.productRoute = require('./productRoute');
 exports.userRoute = require('./userRoute');
 exports.authRoute = require('./authRoute');
 exports.carritoRoute = require('./carritoRoute');
-exports.adminRoute  = require("./adminRoute")
+exports.adminRoute  = require("./adminRoute");
+exports.comprarRoute = require('./comprarRoute');

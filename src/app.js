@@ -2,7 +2,7 @@ require('dotenv').config();
 
 const express = require('express');
 const moongose = require('mongoose');
-const {appRoute,authRoute, userRoute, productRoute, carritoRoute, adminRoute } = require('./Routes');
+const {appRoute,authRoute, userRoute, productRoute, carritoRoute, adminRoute,comprarRoute } = require('./Routes');
 
 const app = express();
 const PORT = process.env.PUERTO;
@@ -15,6 +15,7 @@ app.use('/users', userRoute);
 app.use('/books', productRoute);
 app.use('/carrito', carritoRoute);
 app.use('/admin', adminRoute);
+app.use('/comprar',comprarRoute)
 
 
 const start = async () => {

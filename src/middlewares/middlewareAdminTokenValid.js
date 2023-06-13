@@ -1,7 +1,8 @@
 const jwt = require('jsonwebtoken');
 
+//token para validar que solo sean administradores
 const validateAdminToken = (req, res, next) => {
-  // Obtén el token de la cabecera de autorización
+  // Obtenemos el token de la cabecera de autorización
   const token = req.headers.authorization;
 
   // Verifica si el token está presente
@@ -16,7 +17,7 @@ const validateAdminToken = (req, res, next) => {
     if (decodedToken.exp <= Date.now() / 1000) {
       return res.status(403).json({ message: 'El token ha expirado' });
     }
-
+    //solo para dministardores
     if(decodedToken.role != "admin") {
       return res.status(403).json({ message: 'Solo administradores pueden ejecutar esta accion' });
     }
