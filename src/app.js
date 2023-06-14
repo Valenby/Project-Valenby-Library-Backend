@@ -9,13 +9,13 @@ const PORT = process.env.PUERTO;
 app.use(express.json());
 
 //!RUTAS:
-app.use('/', appRoute);
-app.use('/login', authRoute);
-app.use('/users', userRoute);
-app.use('/books', productRoute);
-app.use('/carrito', carritoRoute);
-app.use('/admin', adminRoute);
-app.use('/comprar',comprarRoute)
+app.use('/api', appRoute);
+app.use('/api/login', authRoute);
+app.use('/api/users', userRoute);
+app.use('/api/books', productRoute);
+app.use('/api/carrito', carritoRoute);
+app.use('/api/admin/verCompras', adminRoute);
+app.use('/api/comprar',comprarRoute)
 
 
 const start = async () => {

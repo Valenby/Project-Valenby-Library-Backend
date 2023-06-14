@@ -5,6 +5,6 @@ const {comprasController} = require('../controller');
 
 const {validateAdminToken}  = require("../middlewares/middlewareAdminTokenValid");
 
-router.get('/verCompras', validateAdminToken, comprasController.getCompras);
+router.get('/', validateAdminToken, comprasController.getCompras);
 
 module.exports = router;
