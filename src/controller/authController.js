@@ -7,10 +7,11 @@ exports.login = async (req, res) => {
 
   try {
     const { email, password } = req.body;
+    console.log(req.body)
     const user = await userModel.login(email, password);
     
     if(!user) {
-      res.json({error: "user / password not exists"});
+      res.status(401).json({error: "user / password not exists"});
       return
     }
     
@@ -21,7 +22,7 @@ exports.login = async (req, res) => {
       { expiresIn: "2h" }
     )
     
-    res.json({token, email: user.email});
+    res.json({token, email: user.email, name: user.name});
 
   } catch (e) {
     console.error(e);

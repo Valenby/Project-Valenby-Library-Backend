@@ -7,6 +7,10 @@ const userSchema = mongoose.Schema({
         ref: 'carrito',
         required: false
     },
+    name: {
+        type: String,
+        required: true
+    },
     email: {
         type: String,
         required: true,
@@ -44,6 +48,11 @@ userSchema.statics.login = async function(email,password){
     try {
         const User = this
         const userToCompare = await User.findOne({ email })
+
+        if(!userToCompare) {
+            return
+          }
+
         let res = await bcrypt.compare(password, userToCompare.password);
         if (res) return userToCompare;
         return 

@@ -1,5 +1,6 @@
 require('dotenv').config();
 
+const cors = require('cors');
 const express = require('express');
 const moongose = require('mongoose');
 const {appRoute,authRoute, userRoute, productRoute, carritoRoute, adminRoute,comprarRoute } = require('./Routes');
@@ -7,6 +8,7 @@ const {appRoute,authRoute, userRoute, productRoute, carritoRoute, adminRoute,com
 const app = express();
 const PORT = process.env.PUERTO;
 app.use(express.json());
+app.use(cors());
 
 //!RUTAS:
 app.use('/api', appRoute);
