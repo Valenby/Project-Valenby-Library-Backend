@@ -83,3 +83,9 @@ npm start
 ```
 http://localhost:3000
 ```
+
+7. Desplegar app 
+```
+Hacer  push a la rama main.
+```
+
