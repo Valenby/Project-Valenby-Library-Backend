@@ -1,6 +1,6 @@
 const { ObjectId } = require('mongodb');
 
-const {carritoModel, userModel} = require('../model');
+const {carritoModel, userModel, bookProductModel} = require('../model');
 
 //create carrito
 exports.createCarrito = async (req, res) => {
@@ -87,7 +87,33 @@ exports.addBookAlCarrito = async (req, res) => {
       console.error('Error adding book to carrito:', error);
       res.status(500).send('Internal Server Error');
     }
-  };
+};
+
+// delete un solo item del carrito
+exports.deleteItemcarrito = async (req, res) => {
+  console.log('method -> delete one items carrito');
+  //extraemos info del user
+  const userId = req.headers.userId
+  const infoUser = await userModel.findById({'_id':userId})
+  const carritoId = infoUser.carrito._id
+  const itemIdborrar = req.params.id
+  const carrito = await carritoModel.findById({'_id': carritoId})
+
+  if(!carrito){
+    res.status(404).send('could not delete')
+    return
+  }
+
+  carrito.items = carrito.items.filter(item => {
+    if(item._id == itemIdborrar) return
+    return item
+  })
+
+  await carrito.save()
+
+  res.json({message:`item '${itemIdborrar}' fue eliminado correctamente`})
+
+}
 
 // delete carrito
 exports.deleteCarrito = async (req, res) => {
@@ -99,7 +125,7 @@ exports.deleteCarrito = async (req, res) => {
     const carritoId = infoUser.carrito
     
     const result = await carritoModel.findByIdAndDelete({'_id': carritoId});
-
+  
     if(!result){
         res.status(404).send('could not delete')
         return

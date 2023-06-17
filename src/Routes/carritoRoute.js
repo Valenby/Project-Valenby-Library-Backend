@@ -9,6 +9,7 @@ const validateMiddlewareCarrito = require('../middlewares/middlewareCarrito');
 router.get('/',validateToken, carritoController.getCarrito);
 router.post('/', [validateToken ,validateMiddlewareCarrito],  carritoController.createCarrito);
 router.patch('/',[validateToken ,validateMiddlewareCarrito], carritoController.addBookAlCarrito);
+router.delete('/item/:id', validateToken, carritoController.deleteItemcarrito);
 router.delete('/', validateToken, carritoController.deleteCarrito);
 
 module.exports = router;

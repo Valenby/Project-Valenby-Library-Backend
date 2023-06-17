@@ -19,8 +19,9 @@ exports.createUser = async (req, res) => {
     } catch (error) {
         //error server, usuario duplicado, etc
         const errorMesage = {
-            message: error.message
+            message: 'El usuario ya existe'
         }
+
         res.status(400).json(errorMesage);
         return
     }

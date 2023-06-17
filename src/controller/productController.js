@@ -20,7 +20,6 @@ exports.getBookId = async (req, res) => {
     } 
 
     const book = await bookProductModel.findById({'_id': req.params.id})
-    console.log(book);
 
     if (!book){
         res.status(404).send('book not found ')
@@ -70,8 +69,6 @@ exports.updateBook = async (req, res) => {
     }
     res.json(result)
 };
-
-//delete book for id
 
 // delete book 
 exports.deleteBook = async (req, res) => {
